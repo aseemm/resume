@@ -3,7 +3,7 @@
 _Engineer based in the SF Bay Area, California_ <br>
 <!-- Hat Tip: Carolyn Stransky,  https://workwithcarolyn.com/blog/digital-cv-guide -->
 
-[Email](mailto:aseemm@gmail.com) / [LinkedIn](https://www.linkedin.com/in/aseemm/) / [GitHub](https://github.com/aseemm/)
+[Email](mailto:aseemm+github@gmail.com) / [LinkedIn](https://www.linkedin.com/in/aseemm/) / [GitHub](https://github.com/aseemm/)
 
 ## 👩🏼‍💻 Technical Experience
 
