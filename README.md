@@ -1,37 +1,24 @@
-## Welcome to GitHub Pages
+# Aseem Maheshwari
 
-You can use the [editor on GitHub](https://github.com/aseemm/resume/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+_Engineer based in the SF Bay Area, California_ <br>
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+[Email](mailto:aseemm@gmail.com) / [LinkedIn](https://www.linkedin.com/in/aseemm/) / [GitHub](https://github.com/aseemm/)
 
-### Markdown
+## 👩🏼‍💻 Technical Experience
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+## 💬 Skills
 
-```markdown
-Syntax highlighted code block
+C, C++, Python, React JS, Unix/Linux, Git
+<br><br>
 
-# Header 1
-## Header 2
-### Header 3
+## 👩🏼‍🎓 Education
 
-- Bulleted
-- List
+**Master of Business Administration** in Marketing & Finance<br>
+[Southern Methodist University](https://www.smu.edu/) - Dallas, TX, USA _(2005 - 2007)_
 
-1. Numbered
-2. List
+**Master of Science** in Electrical & Computer Engineering<br>
+[Carnegie Mellon University](https://www.cmu.edu/) - Pittsburgh, PA, USA _(1998 - 2000)_
 
-**Bold** and _Italic_ and `Code` text
+**Bachelor of Technology** in Electrical Engineering<br>
+[Indian Institute of Technology (IIT), Madras](https://www.iitm.ac.in/) - Chennai, India _(1994 - 1998)_
 
-[Link](url) and ![Image](src)
-```
-
-For more details see [Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/aseemm/resume/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
