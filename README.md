@@ -15,7 +15,7 @@ _Engineer based in the SF Bay Area, California_ <br>
   - Blah, blah2<br>
   - **_Technologies used:_** React, Docker<br>
 
-## 👩🏼‍💻 Experience :man:
+## :man:🏼‍💻 Experience :man:
 
 **Sr. Principal Engineer, ASIC Engineering** @ [Palo Alto Networks](https://www.paloaltonetworks.com) _(Jun 2013 - Present)_ <br>
   - Hardware verification of complex ASICs used in firewalls (ACL, Forwarding, Packet-edit Engines, QoS features, Microcontroller ISA, Ethernet, Interlaken)
