@@ -5,7 +5,7 @@ _Engineer based in the SF Bay Area, California_ <br>
 
 [Email](mailto:aseemm+github@gmail.com) / [LinkedIn](https://www.linkedin.com/in/aseemm/) / [GitHub](https://github.com/aseemm/)
 
-## 👩🏼‍💻 Projects
+## :man:🏼‍:bulb: Projects
 
 [YouTube Search]()<br>
   - Blah, blah<br>
@@ -15,7 +15,7 @@ _Engineer based in the SF Bay Area, California_ <br>
   - Blah, blah2<br>
   - **_Technologies used:_** React, Docker<br>
 
-## :man:🏼‍💻 Experience :man:
+## :man:🏼‍💻 Experience
 
 **Sr. Principal Engineer, ASIC Engineering** @ [Palo Alto Networks](https://www.paloaltonetworks.com) _(Jun 2013 - Present)_ <br>
   - Hardware verification of complex ASICs used in firewalls (ACL, Forwarding, Packet-edit Engines, QoS features, Microcontroller ISA, Ethernet, Interlaken)
@@ -56,14 +56,14 @@ _Engineer based in the SF Bay Area, California_ <br>
   <br><br>
 
 
-## 👩🏼‍🎓 Skills
+## :man:🏼‍:clipboard: Skills
 
 **Languages:** JavaScript, Python, C, C++, HTML, CSS, Verilog, SystemVerilog<br><br>
 **Libraries & Frameworks:** React, Node.js, Flask, SystemC, UVM<br><br>
 **Misc:** Docker, Git, Jenkins<br><br>
 
 
-## 👩🏼‍🎓 Education
+## :man:🏼‍🎓 Education
 
 **Master of Business Administration** in Marketing & Finance<br>
 [Southern Methodist University](https://www.smu.edu/) - Dallas, TX, USA _(2005 - 2007)_
