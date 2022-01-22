@@ -5,7 +5,7 @@ _Engineer based in the SF Bay Area, California_ <br>
 
 [Email](mailto:aseemm+github@gmail.com) / [LinkedIn](https://www.linkedin.com/in/aseemm/) / [GitHub](https://github.com/aseemm/)
 
-## :bulb: Projects
+## 💡 Projects
 
 [YouTube Search]()<br>
   - Blah, blah<br>
@@ -56,7 +56,7 @@ _Engineer based in the SF Bay Area, California_ <br>
   <br><br>
 
 
-## :clipboard: Skills
+## 📋 Skills
 
 **Languages:** JavaScript, Python, C, C++, HTML, CSS, Verilog, SystemVerilog<br><br>
 **Libraries & Frameworks:** React, Node.js, Flask, SystemC, UVM<br><br>
