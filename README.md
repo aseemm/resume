@@ -17,7 +17,7 @@ No-code platform that enables professionals to build interactive applications.
 ## 👩🏼‍💻 Experience
 
 **Sr. Principal Engineer, ASIC Engineering** @ [Palo Alto Networks](https://www.paloaltonetworks.com) _(Jun 2013 - Present)_ <br>
-  - Hardware verification of complex ASICs used in firewalls (ACL, Forwarding, Packet Edit/Rewrite Engines, QoS features, Microcontroller ISA, Ethernet, Interlaken)
+  - Hardware verification of complex ASICs used in firewalls (ACL, Forwarding, Packet-edit Engines, QoS features, Microcontroller ISA, Ethernet, Interlaken)
   - Managed a team of 15+ engineers as well as worked as an individual contributor
   - Championed methodology improvements for quality (formal, emulation) and schedule improvements
   - **_Technologies used:_** UVM, SystemVerilog, Python, SystemC
@@ -30,7 +30,7 @@ No-code platform that enables professionals to build interactive applications.
 
 **Principal Engineer** @ [Marvell (formerly Cavium)](https://www.marvell.com) _(Mar 2008 - Jul 2011)_ <br>
   - Hardware design of network processors (DDR3 controller, Add-work engines, Full chip integration, IEEE 1588)
-  - Hardware verification (NAND flash controller/ONFI)
+  - Hardware verification of network processors (NAND flash controller/ONFI)
   - Championed methodology improvements for quality (assertions)
   - **_Technologies used:_** TestBuilder (C++ library), Verilog, Cadence NCSim, SVA.
   <br><br>
