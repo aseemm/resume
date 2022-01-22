@@ -7,11 +7,12 @@ _Engineer based in the SF Bay Area, California_ <br>
 
 ## 👩🏼‍💻 Projects
 
-**Sr. Principal Engineer, ASIC Engineering** @ [Palo Alto Networks](https://www.paloaltonetworks.com) _(Jun 2013 - Present)_ <br>
-No-code platform that enables professionals to build interactive applications.
-  - Implementing features that improve the UI and accessibility of the integrations platform
-  - Extending a company-wide design system
-  - **_Technologies used:_** Vue, TypeScript, Jest, Testing Library, HTML, CSS, Sass, Web Components (LitElement).
+[YouTube Search]()<br>
+  - **_Technologies used:_** React, Docker
+  <br><br>
+
+[YouTube Search]()<br>
+  - **_Technologies used:_** React, Docker
   <br><br>
 
 ## 👩🏼‍💻 Experience
@@ -53,6 +54,14 @@ No-code platform that enables professionals to build interactive applications.
   - Developed and implemented a ‘beam traversal’ algorithm in C++ for finding geometry in the path of a beam, to replace the traditional ray tracing algorithms used for rendering in computer graphics. Resulted in a 3-5x speed-up in the image generation time}
   - **_Technologies used:_** C++
   <br><br>
+
+
+## 👩🏼‍🎓 Skills
+
+**Languages:** JavaScript, Python, C, C++, HTML, CSS<br>
+**Libraries:** React<br>
+**Frameworks:** Node.js, Flask<br>
+**Misc:** Docker, Git, Jenkins<br>
 
 
 ## 👩🏼‍🎓 Education
