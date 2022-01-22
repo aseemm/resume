@@ -8,12 +8,10 @@ _Engineer based in the SF Bay Area, California_ <br>
 ## 👩🏼‍💻 Projects
 
 [YouTube Search]()<br>
-  - **_Technologies used:_** React, Docker
-  <br><br>
+  - **_Technologies used:_** React, Docker<br>
 
 [YouTube Search]()<br>
-  - **_Technologies used:_** React, Docker
-  <br><br>
+  - **_Technologies used:_** React, Docker<br>
 
 ## 👩🏼‍💻 Experience
 
@@ -58,10 +56,9 @@ _Engineer based in the SF Bay Area, California_ <br>
 
 ## 👩🏼‍🎓 Skills
 
-**Languages:** JavaScript, Python, C, C++, HTML, CSS<br>
-**Libraries:** React<br>
-**Frameworks:** Node.js, Flask<br>
-**Misc:** Docker, Git, Jenkins<br>
+**Languages:** JavaScript, Python, C, C++, HTML, CSS, Verilog, SystemVerilog<br><br>
+**Libraries & Frameworks:** React, Node.js, Flask, SystemC, UVM<br><br>
+**Misc:** Docker, Git, Jenkins<br><br>
 
 
 ## 👩🏼‍🎓 Education
