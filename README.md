@@ -7,9 +7,8 @@ _Engineer based in the SF Bay Area, California_ <br>
 
 ## 💡 Projects
 
-[YouTube Search]()<br>
-  - Blah, blah<br>
-  - **_Technologies used:_** React, Docker<br>
+[Portfolio](https://portfoliomain86471.gtsb.io)<br>
+  - **_Technologies used:_** Gatsby, Docker<br>
 
 [YouTube Search]()<br>
   - Blah, blah2<br>
