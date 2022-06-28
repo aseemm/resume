@@ -1,0 +1,9 @@
+.DS_Store
+*.aux
+*.fdb_latexmk
+*.log
+*.fls
+*.out
+*.pdf
+*.bcf
+*.run.xml
