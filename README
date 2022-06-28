@@ -1,0 +1,20 @@
+# Create image, using TeX Live Distribution, with pdfTeX & LuaTeX engines, in LaTeX format
+docker build -t hello-latex .
+
+# Run image
+docker run -v ~/Documents/Projects/sandbox-latex/src:/src hello-latex
+
+# Clean up
+cd src; rm -f *.fls *.aux *.log *.fdb_latexmk *.out; cd ..
+
+# Notes
+resume.tex    Resume (use 'manager' variable to control output format) -> templates/template1.tex)
+
+# Misc
+	      https://www.overleaf.com/latex/templates/software-engineering-resume/mcvwcrmddsyw -> templates/template1.tex
+	      https://www.overleaf.com/latex/templates/jakes-resume-anonymous/cstpnrbkhndn -> templates/template2.tex
+	      https://www.overleaf.com/latex/templates/jan-kusters-row-layout-cv/pdjxrdkpddzq -> templates/template4.tex	      
+	      https://www.overleaf.com/latex/templates/jan-kusters-classic-cv/tvghvdsffwgs -> templates/template5.tex
+
+
+
