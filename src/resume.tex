@@ -1,0 +1,397 @@
+%-------------------------------------
+% LaTeX Resume for Software Engineers
+% Author : Leslie Cheng
+% License : MIT
+%-------------------------------------
+
+\documentclass[letterpaper,12pt]{article}[leftmargin=*]
+
+\usepackage[empty]{fullpage}
+\usepackage{enumitem}
+\usepackage{ifxetex}
+\ifxetex
+\usepackage{fontspec}
+\usepackage[xetex]{hyperref}
+\else
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[pdftex]{hyperref}
+\fi
+\usepackage{fontawesome}
+\usepackage[sfdefault,light]{FiraSans}
+\usepackage{anyfontsize}
+\usepackage{xcolor}
+\usepackage{tabularx}
+\usepackage{ifthen}
+
+%-------------------------------------------------- SETTINGS HERE --------------------------------------------------
+% Header settings
+\def \fullname {Aseem Maheshwari}
+\def \subtitle {}
+
+\def \linkedinicon {\faLinkedin}
+\def \linkedinlink {https://linkedin.com/in/aseemm/}
+\def \linkedintext {/aseemm}
+
+\def \phoneicon {\faPhone}
+\def \phonetext {+1-510-516-1655}
+
+\def \emailicon {\faEnvelope}
+\def \emaillink {mailto:aseemm@gmail.com}
+\def \emailtext {aseemm@gmail.com}
+
+\def \githubicon {\faGithub}
+\def \githublink {https://github.com/aseemm}
+\def \githubtext {/aseemm}
+
+\def \websiteicon {\faGlobe}
+\def \websitelink {https://google.com/}
+\def \websitetext {dwightschrute.com}
+
+\def \headertype {\doublecol} % \singlecol or \doublecol
+
+% Misc settings
+\def \entryspacing {-0pt}
+
+\def \bulletstyle {\faAngleRight}
+
+% Define colours
+\definecolor{primary}{HTML}{000000}
+\definecolor{secondary}{HTML}{0D47A1}
+\definecolor{accent}{HTML}{263238}
+\definecolor{links}{HTML}{1565C0}
+
+%-------------------------------------------------------------------------------------------------------------------
+
+% Defines to make listing easier
+\def \linkedin {\linkedinicon \hspace{3pt}\href{\linkedinlink}{\linkedintext}}
+\def \phone {\phoneicon \hspace{3pt}{ \phonetext}}
+\def \email {\emailicon \hspace{3pt}\href{\emaillink}{\emailtext}}
+\def \github {\githubicon \hspace{3pt}\href{\githublink}{\githubtext}}
+\def \website {\websiteicon \hspace{3pt}\href{\websitelink}{\websitetext}}
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.55in}
+\addtolength{\evensidemargin}{-0.55in}
+\addtolength{\textwidth}{1.1in}
+\addtolength{\topmargin}{-0.6in}
+\addtolength{\textheight}{1.1in}
+
+% Define the link colours
+\hypersetup{
+  colorlinks=true,
+  urlcolor=links,
+}
+
+% Set the margin alignment
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+%-------------------------
+% Custom commands
+
+% Sections
+\renewcommand{\section}[2]{\vspace{5pt}
+  \colorbox{secondary}{\color{white}\raggedbottom\normalsize\textbf{{#1}{\hspace{7pt}#2}}}
+}
+
+% Entry start and end, for spacing
+\newcommand{\resumeEntryStart}{\begin{itemize}[leftmargin=2.5mm]}
+\newcommand{\resumeEntryEnd}{\end{itemize}\vspace{\entryspacing}}
+
+% Itemized list for the bullet points under an entry, if necessary
+\newcommand{\resumeItemListStart}{\begin{itemize}[leftmargin=4.5mm]}
+\newcommand{\resumeItemListEnd}{\end{itemize}}
+
+% Resume item
+\renewcommand{\labelitemii}{\bulletstyle}
+\newcommand{\resumeItem}[1]{
+\item\small{
+  {#1 \vspace{-2pt}}
+}
+}
+
+% Entry with title, subheading, date(s), and location
+\newcommand{\resumeEntryTSDL}[4]{
+  \vspace{-1pt}\item[]
+  \begin{tabularx}{0.97\textwidth}{X@{\hspace{60pt}}r}
+    \textbf{\color{primary}#1} & {\firabook\color{accent}\small#2} \\
+    \textit{\color{accent}\small#3} & \textit{\color{accent}\small#4} \\
+  \end{tabularx}\vspace{-6pt}
+}
+
+% Entry with title
+\newcommand{\resumeEntryTSDLpart}[2]{
+  \vspace{-6pt}\item[]
+  \begin{tabularx}{0.97\textwidth}{X@{\hspace{60pt}}r}
+    \textit{\color{accent}\small#1} & \textit{\color{accent}\small#2} \\
+  \end{tabularx}\vspace{-6pt}
+}
+
+% Entry with title and date(s)
+\newcommand{\resumeEntryTD}[2]{
+  \vspace{-1pt}\item[]
+  \begin{tabularx}{0.97\textwidth}{X@{\hspace{60pt}}r}
+    \textbf{\color{primary}#1} & {\firabook\color{accent}\small#2} \\
+  \end{tabularx}\vspace{-6pt}
+}
+
+% Entry for summary
+\newcommand{\resumeEntrySummary}{
+  \vspace{-1pt}\item[]
+}
+
+% Entry for special (skills)
+\newcommand{\resumeEntryS}[2]{
+\item[]\small{
+  \textbf{\color{primary}#1 }{ #2 \vspace{-6pt}}
+}
+}
+
+% Double column header
+\newcommand{\doublecol}[6]{
+  \begin{tabularx}{\textwidth}{Xr}
+    {
+      \begin{tabular}[c]{l}
+        \fontsize{25}{35}\selectfont{\color{primary}{{\textbf{\fullname}}}} \\
+                 {\textit{\subtitle}} % You could add a subtitle here
+      \end{tabular}
+    } & {
+      \begin{tabular}[c]{l@{\hspace{1.5em}}l}
+        {\small#4} & {\small#1} \\
+        {\small#5} & {\small#2} \\
+        {\small#6} & {\small#3}
+      \end{tabular}
+    }
+  \end{tabularx}
+}
+
+% Single column header
+\newcommand{\singlecol}[6]{
+  \begin{tabularx}{\textwidth}{Xr}
+    {
+      \begin{tabular}[b]{l}
+        \fontsize{25}{35}\selectfont{\color{primary}{{\textbf{\fullname}}}} \\
+                 {\textit{\subtitle}} % You could add a subtitle here
+      \end{tabular}
+    } & {
+      \begin{tabular}[c]{l}
+        {\small#1} \\
+        {\small#2} \\
+        {\small#3} \\
+        {\small#4} \\
+        {\small#5} \\
+        {\small#6}
+      \end{tabular}
+    }
+  \end{tabularx}
+}
+
+\begin{document}
+%-------------------------------------------------- BEGIN HERE --------------------------------------------------
+
+% switch between ic and manager resumes
+\newboolean{manager}
+\setboolean{manager}{true}
+
+%---------------------------------------------------- HEADER ----------------------------------------------------
+
+\headertype{\linkedin}{\github}{}{\phone}{\email}{} % Set the order of items here
+\vspace{-10pt} % Set a negative value to push the body up, and the opposite
+
+%-------------------------------------------------- SUMMARY --------------------------------------------------
+\section{\faBook}{Summary}
+
+\resumeEntryStart
+\resumeEntrySummary
+    \resumeItemListStart
+    \resumeItem {20+ years of experience in ASIC/FPGA design and verification with 5+ years in leading ASIC pre \& post-silicon teams}
+\ifthenelse {\boolean{manager}} {}{    
+    \resumeItem {Hands-on expertise in building scalable, reusable, self-checking DV TBs using SystemVerilog/UVM methodology; building emulation \& formal testbenches; post-silicon validation}
+}
+\ifthenelse {\boolean{manager}} {
+    \resumeItem {Expertise in ASIC/FPGA design and verification flows (concept to production through sustaining) with a track record of delivering first pass production silicon}
+}{}
+    \resumeItem {Proven success in fostering productive working relationships, managing multiple, simultaneous tasks while leading and directing high performance engineering teams to complete projects within time and budget constraints}
+    \resumeItem {Strong technical and management skills. Excellent written and verbal communication skills}
+    \resumeItemListEnd
+\resumeEntryEnd
+    
+%-------------------------------------------------- EXPERIENCE --------------------------------------------------
+\section{\faPieChart}{Experience}
+
+\resumeEntryStart
+\ifthenelse {\boolean{manager}} {
+\resumeEntryTSDL
+    {Palo Alto Networks}{Jun 2013 -- Present}
+    {Sr. Manager/Sr. Principal Engineer, ASIC Engineering}{Santa Clara, CA}
+}{
+\resumeEntryTSDL
+    {Palo Alto Networks}{Jun 2013 -- Present}
+    {Sr. Principal Engineer, ASIC Engineering}{Santa Clara, CA}
+\resumeEntryTSDLpart
+    {Sr. Principal Engineer/Sr. Manager, ASIC Engineering}{}
+\resumeEntryTSDLpart
+    {Principal Engineer/Manager, ASIC Engineering}{}    
+\resumeEntryTSDLpart    
+    {Principal Engineer}{}
+}
+    \resumeItemListStart
+    \resumeItem {Managed a team of 15+ engineers verifying complex ASICs for firewall products. Responsible for staffing (internally as well as leveraging external partners), planning, schedules and employee assessments}
+    \resumeItem {Leading effort for defining/verifying fourth generation Flow Engine ASIC. Led effort to successfully verify/tape-out/bring up silicon for multiple generations of flow engine chips}
+    \resumeItem {Championed design verification methodology improvements/enhancements to improve design and verification quality and development time}
+        \resumeItemListStart    
+        \resumeItem {Drove emulator selection, deployment and use models}        
+        \resumeItem {Deployed automated mechanisms to validate PCAPs against architectural and simulation models}
+%        \resumeItem {Centralized functional verification regression runs, coverage collection and result reporting for entire team}
+%        \resumeItem {Introduced new verification flows, methodologies and automation tools to improve design & verification quality and development time}
+        \resumeItem {Status reporting and dashboards}
+        \resumeItemListEnd    
+%    \resumeItem {Handle conflict resolution, performance management, cross-functional escalations}
+%    \resumeItem {Mentored and trained both design & verification engineers & interns}
+%    \resumeItem {Built and managed large verification and validation teams from scratch, across multiple geographic locations}
+%    \resumeItem {Actively participated in SoC architecture, specification reviews and provide feedback to imporve design and DV efficency}
+%    \resumeItem {Empowered and coached DV managers and leads to develop next generation leadership}        
+%    \resumeItem {Constantly seek out opportunities for improving verification process by evaluation new flows and methodologies, EDA tools, standard VIPs and procuring from third party vendors}
+     \resumeItem {Verifying QoS features (scheduling, shaping) using a Python-SystemC-Veloce emulation flow}
+     \resumeItem {Verified multiple blocks in the ingress and egress pipelines including the access control lists and the forwarding engines}
+     \resumeItem {Verified ISA of a custom microcontroller by developing a reference model using SystemC, a random instruction generator using Python, formal property verification using VC-Formal}
+    \resumeItemListEnd
+\resumeEntryEnd
+
+\resumeEntryStart
+\resumeEntryTSDL
+   {LSI (formerly SandForce)}{Jul 2011 -- Jun 2013}
+   {Principal Verification Design Engineer}{Milpitas, CA}
+   \resumeItemListStart
+   \resumeItem {Verified the 4x Gen2 dual-port PCIe interface for the next-generation flash storage processor. Architected and developed infrastructure and tests for AHCI and NVM Express (NVMe) host interfaces in a PCIe environment using UVM. Also verified hardware-based virtualization (SR-IOV), power management, error handling and recovery features, including interrupt servicing}
+   \resumeItem {Wrote embedded firmware tests in C to verify DMA (over PCIe) programming model and functionality. Also wrote tests duplicating emulation fail scenarios to facilitate debug}
+   \resumeItemListEnd
+\resumeEntryEnd
+
+\resumeEntryStart
+\resumeEntryTSDL
+   {Cavium Networks}{Mar 2008 -- Jul 2011}
+   {Principal Engineer}{Marlboro, MA}
+   \resumeItemListStart
+   \resumeItem {Designed and implemented the add-work engine for the schedule/synchronize/order unit in the Octeon 2 CN68xx product line. The logic handled ordering of new work into 8 input work queues of arbitrarily large size (with overflow into DRAM), with a performance of 100M add-work’s/sec}
+   \resumeItem {Owned full chip integration, modeling the PLLs and pad frame on CN63xx, In addition, added in hardware-assist logic to all of CN63xx’s MAC-PHY interfaces to support the IEEE 1588 protocol}
+   \resumeItem {Designed and implemented a high-performance DDR3 Memory Controller for the Octeon 2 CN63xx/CN68xx product lines. Developed several advanced queuing, arbitration, page-management, and scheduling features to maximize bandwidth, minimize latency, and optimize power management of the controller. Worked with custom designers to implement the associated PHY in a 65nm process, targeted at up to DDR3-1600. Ran synthesis and timing analysis to meet timing performance, power and yield constraints. Also ran gate level simulations with back-annotated SDF and LEC formal verification to verify quality}
+   \resumeItem {Verified the NAND Flash Controller for the Octeon Plus CN52xx product line}
+   \resumeItemListEnd
+\resumeEntryEnd
+
+\resumeEntryStart
+\ifthenelse {\boolean{manager}} {
+\resumeEntryTSDL
+   {Texas Instruments}{Oct 2003 -- Mar 2008}
+   {Design Verification Lead}{Dallas, TX}  
+}{
+\resumeEntryTSDL
+   {Texas Instruments}{Oct 2003 -- Mar 2008}
+   {Design Verification Lead}{Dallas, TX}
+\resumeEntryTSDLpart
+    {Design Verification Engineer}{}
+}    
+   \resumeItemListStart
+   \resumeItem {Led a team of 4 engineers verifying a multi-core, multi-threaded VLIW DSP. Responsible for verification planning, defining test generation flows, infrastructure development and execution}
+   \resumeItem {Championed effort to align methodology and tools for processor verification across TI}
+   \resumeItem {Led project to improve product delivery for the Guinness Book of World Record winning 1GHz DSP. Reduced test times by 2s per test insertion for an overall savings of 3.09 months of tester time per million parts}
+   \resumeItem {Verified the low power and memory test/characterization features of a single chip W-CDMA baseband device for the base station market. The market for this chip is estimated to be US\$ 600 million}   
+   \resumeItem {Verified a 750 MHz fixed point ISA DSP (part of the TMS320 family of DSPs). This CPU core (along with the corresponding mega-module) is being leveraged in multiple chips across TI. The market for this core is estimated to be over US\$ 1 billion over the next ten years}
+   \resumeItemListEnd
+\resumeEntryEnd   
+
+\resumeEntryStart
+\resumeEntryTSDL
+   {Intrinsix}{Mar 2001 -- Oct 2003}
+   {Design Engineer}{Westboro, MA}
+   \resumeItemListStart
+%   \resumeItem {Design and Verification Consultant for ASIC and FPGA development}
+   \resumeItem {Worked on multiple product teams with responsibilities including micro-architecture, RTL design, synthesis and static timing analysis, functional/gate-level verification, FPGA implementation and prototyping, and lab debug}
+   \resumeItem {Successful projects included verification of a personal authentication SoC (for use in Bloomberg terminals), design and implementation of a Digital Test Controller FPGA (for MEMS test systems), verification and synthesis of a high-performance configurable RISC core and design and implementation of major portions of a telephony/switch ASIC}
+   \resumeItemListEnd
+\resumeEntryEnd
+
+\resumeEntryStart
+\resumeEntryTSDL
+   {Immersive Technologies}{Jun 2000 -- Jan 2001}
+   {Design Engineer}{Malden, MA}
+   \resumeItemListStart
+%   \resumeItem {Computer Graphics start-up with proprietary hardware/software technology accelerating computer image generation to minutes instead of hours}
+   \resumeItem {Developed and implemented a ‘beam traversal’ algorithm in C++ for finding geometry in the path of a beam, to replace the traditional ray tracing algorithms used for rendering in computer graphics. Resulted in a 3-5x speed-up in the image generation time}
+   \resumeItem {Designed and implemented a fully pipelined hash-table in hardware to replace one in software. The design took in five 16-bit integers, computed the hash, interacted with SRAM and output the hashed-value}
+   \resumeItemListEnd
+\resumeEntryEnd
+
+%% \resumeEntryStart
+%% \resumeEntryTSDL
+%%    {Carnegie Mellon University}{Aug 1998 -- May 2000}
+%%    {Research Assistant}{Pittsburgh, PA}
+%%    \resumeItemListStart
+%%    \resumeItem {Research focus was on creating models of complex micro-electromechanical systems (MEMS) to enable the development of systems containing a large number of micron to millimeter-size devices each interacting with the environment}
+%%    \resumeItem {Invented and implemented algorithms for reducing the number of nodes and variables in a MEMS design. The generated models were integrated with existing NODAS models using Spectre and Matlab and resulted in a 10-100x speedup in total simulation time}
+%%    \resumeItemListEnd
+%% \resumeEntryEnd      
+
+%% %-------------------------------------------------- PROJECTS --------------------------------------------------
+%% \section{\faFlask}{Projects}
+
+%% \resumeEntryStart
+%% \resumeEntryTD
+%%     {Schrute Farms (Bed and Breakfast)}{}
+%%     \resumeItemListStart
+%%     \resumeItem {A beautiful resort that provides fun activites like tablemaking and mattress making.}
+%%     \resumeItemListEnd
+%% \resumeEntryEnd
+
+%% \resumeEntryStart
+%% \resumeEntryTD
+%%     {Dwight Schrute's Gym for Muscles}{}
+%%     \resumeItemListStart
+%%     \resumeItem {A built-in gym inside the Dunder Mifflin office complex that will buy your tin for 5 cents a yard.}
+%%     \resumeItemListEnd
+%% \resumeEntryEnd
+
+%% \resumeEntryStart
+%% \resumeEntryTD
+%%     {Sesame Avenue Daycare Center for Infants and Toddlers}{}
+%%     \resumeItemListStart
+%%     \resumeItem {A great daycare for infants with a focus on cognitive development.}
+%%     \resumeItemListEnd
+%% \resumeEntryEnd
+
+%-------------------------------------------------- EDUCATION --------------------------------------------------
+\section{\faGraduationCap}{Education}
+
+\ifthenelse {\boolean{manager}} {
+\resumeEntryStart
+\resumeEntryTSDL
+    {Southern Methodist University}{Aug 2005 -- May 2007}
+    {Master of Business Administration, Finance/Marketing}{Dallas, TX}
+\resumeEntryEnd
+}{}
+
+\resumeEntryStart
+\resumeEntryTSDL
+    {Carnegie Mellon University}{Aug 1998 -- May 2000}
+    {Master of Science, Electrical \& Computer Engineering}{Pittsburgh, PA}
+ \resumeEntryEnd    
+
+\resumeEntryStart
+\resumeEntryTSDL
+    {Indian Institute of Technology (IIT), Madras}{Aug 1994 -- May 1998}
+    {Bachelor of Technology, Electrical Engineering}{Chennai, India}
+\resumeEntryEnd    
+
+%-------------------------------------------------- PROGRAMMING SKILLS --------------------------------------------------
+\section{\faGears}{Skills}
+
+\resumeEntryStart
+\resumeEntryS{Languages/Methodology } {Verilog, SystemVerilog, UVM, VMM, VHDL, Verisity e, Vera/NTB, Verilog PLI, C, C++, Perl, Python, Make, Shell scripting, Java, SVA, OVL, PSL, TestBuilder}
+% \resumeEntryS{Tools } {Synopsys Design Compiler, IC Compiler, Primetime, VCS/DVE, Cadence NC-Verilog/Simvision, Verilog-XL, Axiom MPSim, Mentor Graphics ModelSim, Cadence (Verisity) Specman Elite and eAnalyzer, Xilinx Alliance Tools, Altera Quartus and MAX-Plus 2, Synplify, Denali Memory Models, Springsoft (Novas) Verdi and Debussy, RealIntent Meridian, Hspice, Matlab, VC-Formal}
+\resumeEntryS{Protocols/Standards/Interfaces } {PCIe, AHCI, NVM Express, ONFI, DDR3, Ethernet, Interlaken}
+\resumeEntryEnd
+
+\end{document}
