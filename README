@@ -2,7 +2,7 @@
 docker build -t hello-latex .
 
 # Run image
-docker run -v ~/Documents/Projects/sandbox-latex/src:/src hello-latex
+docker run -v ~/Documents/Projects/resume/src:/src hello-latex
 
 # Clean up
 cd src; rm -f *.fls *.aux *.log *.fdb_latexmk *.out; cd ..
