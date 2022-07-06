@@ -1,397 +1,536 @@
-%-------------------------------------
-% LaTeX Resume for Software Engineers
-% Author : Leslie Cheng
-% License : MIT
-%-------------------------------------
+%-----------------------------------------------------------------------------------------------------------------------------------------------%
+%	The MIT License (MIT)
+%
+%	Copyright (c) 2015 Jan Küster
+%
+%	Permission is hereby granted, free of charge, to any person obtaining a copy
+%	of this software and associated documentation files (the "Software"), to deal
+%	in the Software without restriction, including without limitation the rights
+%	to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+%	copies of the Software, and to permit persons to whom the Software is
+%	furnished to do so, subject to the following conditions:
+%	
+%	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+%	IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+%	FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+%	AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+%	LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+%	OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+%	THE SOFTWARE.
+%	
+%
+%-----------------------------------------------------------------------------------------------------------------------------------------------%
 
-\documentclass[letterpaper,12pt]{article}[leftmargin=*]
 
-\usepackage[empty]{fullpage}
-\usepackage{enumitem}
-\usepackage{ifxetex}
-\ifxetex
-\usepackage{fontspec}
-\usepackage[xetex]{hyperref}
-\else
-\usepackage[utf8]{inputenc}
+%============================================================================%
+%
+%	DOCUMENT DEFINITION
+%
+%============================================================================%
+
+%we use article class because we want to fully customize the page and dont use a cv template
+\documentclass[10pt,A4]{article}	
+
+
+%----------------------------------------------------------------------------------------
+%	ENCODING
+%----------------------------------------------------------------------------------------
+
+%we use utf8 since we want to build from any machine
+\usepackage[utf8]{inputenc}		
+
+%----------------------------------------------------------------------------------------
+%	LOGIC
+%----------------------------------------------------------------------------------------
+
+% provides \isempty test
+\usepackage{xifthen}
+
+%----------------------------------------------------------------------------------------
+%	FONT
+%----------------------------------------------------------------------------------------
+
+% some tex-live fonts - choose your own
+
+%\usepackage[defaultsans]{droidsans}
+%\usepackage[default]{comfortaa}
+%\usepackage{cmbright}
+\usepackage[default]{raleway}
+%\usepackage{fetamont}
+%\usepackage[default]{gillius}
+%\usepackage[light,math]{iwona}
+%\usepackage[thin]{roboto} 
+
+% set font default
+\renewcommand*\familydefault{\sfdefault} 	
 \usepackage[T1]{fontenc}
-\usepackage[pdftex]{hyperref}
-\fi
-\usepackage{fontawesome}
-\usepackage[sfdefault,light]{FiraSans}
-\usepackage{anyfontsize}
-\usepackage{xcolor}
-\usepackage{tabularx}
-\usepackage{ifthen}
 
-%-------------------------------------------------- SETTINGS HERE --------------------------------------------------
-% Header settings
-\def \fullname {Aseem Maheshwari}
-\def \subtitle {}
+% more font size definitions
+\usepackage{moresize}		
 
-\def \linkedinicon {\faLinkedin}
-\def \linkedinlink {https://linkedin.com/in/aseemm/}
-\def \linkedintext {/aseemm}
 
-\def \phoneicon {\faPhone}
-\def \phonetext {+1-510-516-1655}
+%----------------------------------------------------------------------------------------
+%	PAGE LAYOUT  DEFINITIONS
+%----------------------------------------------------------------------------------------
 
-\def \emailicon {\faEnvelope}
-\def \emaillink {mailto:aseemm@gmail.com}
-\def \emailtext {aseemm@gmail.com}
+%debug page outer frames
+%\usepackage{showframe}			
 
-\def \githubicon {\faGithub}
-\def \githublink {https://github.com/aseemm}
-\def \githubtext {/aseemm}
 
-\def \websiteicon {\faGlobe}
-\def \websitelink {https://google.com/}
-\def \websitetext {dwightschrute.com}
+%define page styles using geometry
+\usepackage[a4paper]{geometry}		
 
-\def \headertype {\doublecol} % \singlecol or \doublecol
+% for example, change the margins to 2 inches all round
+\geometry{top=.5cm, bottom=-.6cm, left=-0.1cm, right=0cm} 	
 
-% Misc settings
-\def \entryspacing {-0pt}
+%use customized header
+\usepackage{fancyhdr}				
+\pagestyle{fancy}
 
-\def \bulletstyle {\faAngleRight}
+%less space between header and content
+\setlength{\headheight}{-5pt}		
 
-% Define colours
-\definecolor{primary}{HTML}{000000}
-\definecolor{secondary}{HTML}{0D47A1}
-\definecolor{accent}{HTML}{263238}
-\definecolor{links}{HTML}{1565C0}
 
-%-------------------------------------------------------------------------------------------------------------------
+%customize entries left, center and right
+\lhead{}
+\chead{}
+\rhead{}
 
-% Defines to make listing easier
-\def \linkedin {\linkedinicon \hspace{3pt}\href{\linkedinlink}{\linkedintext}}
-\def \phone {\phoneicon \hspace{3pt}{ \phonetext}}
-\def \email {\emailicon \hspace{3pt}\href{\emaillink}{\emailtext}}
-\def \github {\githubicon \hspace{3pt}\href{\githublink}{\githubtext}}
-\def \website {\websiteicon \hspace{3pt}\href{\websitelink}{\websitetext}}
+\newcommand{\padding}{1cm}
+\newcommand{\innerwidth}{\linewidth-\padding-\padding}
 
-% Adjust margins
-\addtolength{\oddsidemargin}{-0.55in}
-\addtolength{\evensidemargin}{-0.55in}
-\addtolength{\textwidth}{1.1in}
-\addtolength{\topmargin}{-0.6in}
-\addtolength{\textheight}{1.1in}
+%indentation is zero
+\setlength{\parindent}{0mm}
 
-% Define the link colours
-\hypersetup{
-  colorlinks=true,
-  urlcolor=links,
+%----------------------------------------------------------------------------------------
+%	TABLE /ARRAY DEFINITIONS
+%---------------------------------------------------------------------------------------- 
+
+%for layouting tables
+\usepackage{multicol}			
+\usepackage{multirow}
+
+%extended aligning of tabular cells
+\usepackage{array}
+
+\newcolumntype{x}[1]{%
+>{\raggedleft\hspace{0pt}}p{#1}}%
+
+
+%----------------------------------------------------------------------------------------
+%	GRAPHICS DEFINITIONS
+%---------------------------------------------------------------------------------------- 
+
+%for header image
+\usepackage{graphicx}
+
+%for floating figures
+\usepackage{wrapfig}
+\usepackage{float}
+%\floatstyle{boxed} 
+%\restylefloat{figure}
+
+%for drawing graphics		
+\usepackage{tikz}				
+\usetikzlibrary{shapes, backgrounds,mindmap, trees}
+
+
+%----------------------------------------------------------------------------------------
+%	Color DEFINITIONS
+%---------------------------------------------------------------------------------------- 
+\usepackage{transparent}
+\usepackage{color}
+
+%accent color
+\definecolor{sectcol}{RGB}{255,150,0}
+
+%dark background color
+\definecolor{bgcol}{RGB}{110,110,110}
+
+%light background / accent color
+\definecolor{softcol}{RGB}{225,225,225}
+
+% light bg
+\definecolor{light}{RGB}{210, 210, 210}
+
+%============================================================================%
+%
+%
+%	DEFINITIONS
+%
+%
+%============================================================================%
+
+%----------------------------------------------------------------------------------------
+% 	HEADER
+%----------------------------------------------------------------------------------------
+
+% remove top header line
+\renewcommand{\headrulewidth}{0pt} 
+
+%remove botttom header line
+\renewcommand{\footrulewidth}{0pt}	  	
+
+%remove pagenum
+\renewcommand{\thepage}{}	
+
+%remove section num		
+\renewcommand{\thesection}{}			
+
+%----------------------------------------------------------------------------------------
+% 	ARROW GRAPHICS in Tikz
+%----------------------------------------------------------------------------------------
+
+% a six pointed arrow poiting to the left
+\newcommand{\tzlarrow}{(0,0) -- (0.2,0) -- (0.3,0.2) -- (0.2,0.4) -- (0,0.4) -- (0.1,0.2) -- cycle;}	
+
+% include the left arrow into a tikz picture
+% param1: fill color
+%
+\newcommand{\larrow}[1]
+{\begin{tikzpicture}[scale=0.58]
+	 \filldraw[fill=#1!100,draw=#1!100!black]  \tzlarrow
+ \end{tikzpicture}
 }
 
-% Set the margin alignment
-\raggedbottom
-\raggedright
-\setlength{\tabcolsep}{0in}
+% a six pointed arrow poiting to the right
+\newcommand{\tzrarrow}{ (0,0.2) -- (0.1,0) -- (0.3,0) -- (0.2,0.2) -- (0.3,0.4) -- (0.1,0.4) -- cycle;}
 
-%-------------------------
-% Custom commands
-
-% Sections
-\renewcommand{\section}[2]{\vspace{5pt}
-  \colorbox{secondary}{\color{white}\raggedbottom\normalsize\textbf{{#1}{\hspace{7pt}#2}}}
+% include the right arrow into a tikz picture
+% param1: fill color
+%
+\newcommand{\rarrow}[1]
+{\begin{tikzpicture}[scale=0.7]
+	 \filldraw[fill=#1!100,draw=#1!100!black]  \tzrarrow
+ \end{tikzpicture}
 }
 
-% Entry start and end, for spacing
-\newcommand{\resumeEntryStart}{\begin{itemize}[leftmargin=2.5mm]}
-\newcommand{\resumeEntryEnd}{\end{itemize}\vspace{\entryspacing}}
 
-% Itemized list for the bullet points under an entry, if necessary
-\newcommand{\resumeItemListStart}{\begin{itemize}[leftmargin=4.5mm]}
-\newcommand{\resumeItemListEnd}{\end{itemize}}
 
-% Resume item
-\renewcommand{\labelitemii}{\bulletstyle}
-\newcommand{\resumeItem}[1]{
-\item\small{
-  {#1 \vspace{-2pt}}
-}
-}
+%----------------------------------------------------------------------------------------
+%	custom sections
+%----------------------------------------------------------------------------------------
 
-% Entry with title, subheading, date(s), and location
-\newcommand{\resumeEntryTSDL}[4]{
-  \vspace{-1pt}\item[]
-  \begin{tabularx}{0.97\textwidth}{X@{\hspace{60pt}}r}
-    \textbf{\color{primary}#1} & {\firabook\color{accent}\small#2} \\
-    \textit{\color{accent}\small#3} & \textit{\color{accent}\small#4} \\
-  \end{tabularx}\vspace{-6pt}
+% create a coloured box with arrow and title as cv section headline
+% param 1: section title
+%
+\newcommand{\cvsection}[1]
+{
+\colorbox{sectcol}{\mystrut \makebox[1\linewidth][l]{
+\larrow{bgcol} \hspace{-8pt} \larrow{bgcol} \hspace{-8pt} \larrow{bgcol} \textcolor{white}{\textbf{#1}}\hspace{4pt}
+}}\\
 }
 
-% Entry with title
-\newcommand{\resumeEntryTSDLpart}[2]{
-  \vspace{-6pt}\item[]
-  \begin{tabularx}{0.97\textwidth}{X@{\hspace{60pt}}r}
-    \textit{\color{accent}\small#1} & \textit{\color{accent}\small#2} \\
-  \end{tabularx}\vspace{-6pt}
+%create a coloured arrow with title as cv meta section section
+% param 1: meta section title
+%
+\newcommand{\metasection}[2]
+{
+\begin{tabular*}{1\textwidth}{p{4cm} p{11cm}}
+\larrow{bgcol}	\normalsize{\textcolor{sectcol}{#1}}&#2\\[8pt]
+\end{tabular*}
 }
 
-% Entry with title and date(s)
-\newcommand{\resumeEntryTD}[2]{
-  \vspace{-1pt}\item[]
-  \begin{tabularx}{0.97\textwidth}{X@{\hspace{60pt}}r}
-    \textbf{\color{primary}#1} & {\firabook\color{accent}\small#2} \\
-  \end{tabularx}\vspace{-6pt}
+%----------------------------------------------------------------------------------------
+%	 CV EVENT
+%----------------------------------------------------------------------------------------
+
+% creates a stretched box as cv entry headline followed by two paragraphs about 
+% the work you did
+% param 1:	event time i.e. 2014 or 2011-2014 etc.
+% param 2:	event name (what did you do?)
+% param 3:	institution (where did you work / study)
+% param 4:	what was your position
+% param 5:	some words about your contributions
+%
+\newcommand{\cvevent}[5]
+{
+\vspace{8pt}
+	\begin{tabular*}{0.6\linewidth}{ p{12cm} x{3cm}}
+\textbf{#2} \textcolor{bgcol}{#3}&\textcolor{bgcol}{#1}\\[4pt]
+	\end{tabular*}
+\vspace{-12pt}
+\textcolor{softcol}{\hrule}
+\vspace{6pt}
+	\begin{tabular*}{1\textwidth}{l}
+		 \larrow{sectcol}  #4\\[4.5pt]
+		 \larrow{sectcol}  #5\\[6pt]
+	\end{tabular*}
+\vspace{-4pt}
 }
 
-% Entry for summary
-\newcommand{\resumeEntrySummary}{
-  \vspace{-1pt}\item[]
+\newcommand{\cveventone}[5]
+{
+\vspace{8pt}
+	\begin{tabular*}{0.6\linewidth}{ p{12cm} x{3cm}}
+\textbf{#2} \textcolor{bgcol}{#3}&\textcolor{bgcol}{#1}\\[4pt]
+	\end{tabular*}
+\vspace{-12pt}
+\textcolor{softcol}{\hrule}
+\vspace{6pt}
+	\begin{tabular*}{1\textwidth}{l}
+		 \larrow{sectcol}  #4\\[4.5pt]
+	\end{tabular*}
+\vspace{-4pt}
 }
 
-% Entry for special (skills)
-\newcommand{\resumeEntryS}[2]{
-\item[]\small{
-  \textbf{\color{primary}#1 }{ #2 \vspace{-6pt}}
-}
-}
-
-% Double column header
-\newcommand{\doublecol}[6]{
-  \begin{tabularx}{\textwidth}{Xr}
-    {
-      \begin{tabular}[c]{l}
-        \fontsize{25}{35}\selectfont{\color{primary}{{\textbf{\fullname}}}} \\
-                 {\textit{\subtitle}} % You could add a subtitle here
-      \end{tabular}
-    } & {
-      \begin{tabular}[c]{l@{\hspace{1.5em}}l}
-        {\small#4} & {\small#1} \\
-        {\small#5} & {\small#2} \\
-        {\small#6} & {\small#3}
-      \end{tabular}
-    }
-  \end{tabularx}
+\newcommand{\cveventthree}[6]
+{
+\vspace{8pt}
+	\begin{tabular*}{0.6\linewidth}{ p{12cm} x{3cm}}
+\textbf{#2} \textcolor{bgcol}{#3}&\textcolor{bgcol}{#1}\\[4pt]
+	\end{tabular*}
+\vspace{-12pt}
+\textcolor{softcol}{\hrule}
+\vspace{6pt}
+	\begin{tabular*}{1\textwidth}{l}
+		 \larrow{sectcol}  #4\\[4.5pt]
+		 \larrow{sectcol}  #5\\[6pt]
+		 \larrow{sectcol}  #6\\[6pt]                 
+	\end{tabular*}
+\vspace{-4pt}
 }
 
-% Single column header
-\newcommand{\singlecol}[6]{
-  \begin{tabularx}{\textwidth}{Xr}
-    {
-      \begin{tabular}[b]{l}
-        \fontsize{25}{35}\selectfont{\color{primary}{{\textbf{\fullname}}}} \\
-                 {\textit{\subtitle}} % You could add a subtitle here
-      \end{tabular}
-    } & {
-      \begin{tabular}[c]{l}
-        {\small#1} \\
-        {\small#2} \\
-        {\small#3} \\
-        {\small#4} \\
-        {\small#5} \\
-        {\small#6}
-      \end{tabular}
-    }
-  \end{tabularx}
+\newcommand{\cveventsmall}[4]
+{
+\vspace{8pt}
+	\begin{tabular*}{0.6\linewidth}{ p{12cm} x{3cm}}
+\textbf{#2} \textcolor{bgcol}{(#3)}&\textcolor{bgcol}{#1}\\[4pt]
+	\end{tabular*}
+\vspace{-12pt}
+\textcolor{softcol}{\hrule}
+\vspace{6pt}
+	\begin{tabular*}{1\textwidth}{l}
+		 \larrow{sectcol}  #4\\[4.5pt]
+	\end{tabular*}
+\vspace{-4pt}
 }
 
+% creates a stretched box as 
+\newcommand{\cveventmeta}[2]
+{
+	\mbox{\mystrut \hspace{87pt}\textit{#1}}\\
+	#2
+}
+
+%----------------------------------------------------------------------------------------
+% CUSTOM STRUT FOR EMPTY BOXES
+%----------------------------------------- -----------------------------------------------
+\newcommand{\mystrut}{\rule[-.3\baselineskip]{0pt}{\baselineskip}}
+
+%----------------------------------------------------------------------------------------
+% CUSTOM LOREM IPSUM
+%----------------------------------------------------------------------------------------
+\newcommand{\lorem}
+{Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus.}
+
+
+
+%============================================================================%
+%
+%
+%
+%	DOCUMENT CONTENT
+%
+%
+%
+%============================================================================%
 \begin{document}
-%-------------------------------------------------- BEGIN HERE --------------------------------------------------
 
-% switch between ic and manager resumes
-\newboolean{manager}
-\setboolean{manager}{false}
+%use our custom fancy header definitions
+\pagestyle{fancy}	
 
-%---------------------------------------------------- HEADER ----------------------------------------------------
+%----------------------------------------------------------------------------------------
+% HEADLINE / BASIC INFORMATION
+%----------------------------------------------------------------------------------------
+\fcolorbox{bgcol}{bgcol}{
+\begin{minipage}[c][0.085\textheight][t]{\linewidth}
+\begin{center}
+	\vspace{14pt}
+%	\textcolor{light}{\small{Consultant and Hardware Engineer $\cdot$  Fremont, CA  $\cdot$  aasim.sharif5@gmail.com  $\cdot$ +1 510 516 1655}}\\
+	\textcolor{light}{\small{SoC/ASIC Verification Consultant $\cdot$  aseemm@gmail.com}}\\        
+	\HUGE{\textcolor{white}{\textsc{Aseem Maheshwari}} } \textcolor{sectcol}{\rule[-1mm]{1mm}{0.9cm}} \HUGE{\textcolor{white}{\textsc{Resume}} }        
+\end{center}
+\end{minipage}}\\[-4pt]
+%----------------------------------------------------------------------------------------
+% SUMMARY
+%----------------------------------------------------------------------------------------
 
-\headertype{\linkedin}{\github}{}{\phone}{\email}{} % Set the order of items here
-\vspace{-10pt} % Set a negative value to push the body up, and the opposite
-
-%-------------------------------------------------- SUMMARY --------------------------------------------------
-\section{\faBook}{Summary}
-
-\resumeEntryStart
-\resumeEntrySummary
-    \resumeItemListStart
-    \resumeItem {20+ years of experience in ASIC/FPGA design and verification with 5+ years in leading ASIC pre \& post-silicon teams}
-\ifthenelse {\boolean{manager}} {}{    
-    \resumeItem {Hands-on expertise in building scalable, reusable, self-checking DV TBs using SystemVerilog/UVM methodology; building emulation \& formal testbenches; post-silicon validation}
+%% \fcolorbox{sectcol}{sectcol}{
+%% \begin{minipage}[c][0.03\textheight][t]{\linewidth}
+%% \vspace{-3pt}
+%% \begin{center}
+%% \parbox[b]{0.75\linewidth}{
+%% 	\begin{center}
+%% 	\large
+%% %	\larrow{bgcol}\larrow{bgcol} \textcolor{white}{I create awesome resume templates in LaTeX for everyone.} \rarrow{bgcol}\rarrow{bgcol}
+%% 	\end{center}
+%% }
+%% \end{center}
+%% \end{minipage}}\\[-4pt]
+%----------------------------------------------------------------------------------------
+% META
+%----------------------------------------------------------------------------------------
+\fcolorbox{bgcol}{bgcol}{
+\begin{minipage}[c][0.01\textheight][t]{\linewidth}
+\vspace{-8pt}
+\begin{center}
+\parbox[b]{0.75\linewidth}{
+	\begin{center}
+%	 \textcolor{white}{www.jankuester.com} \textcolor{white}{$\cdot$} \textcolor{white}{twitter.com/kuester\_jan}
+	\end{center}
 }
-\ifthenelse {\boolean{manager}} {
-    \resumeItem {Expertise in ASIC/FPGA design and verification flows (concept to production through sustaining) with a track record of delivering first pass production silicon}
-}{}
-    \resumeItem {Proven success in fostering productive working relationships, managing multiple, simultaneous tasks while leading and directing high performance engineering teams to complete projects within time and budget constraints}
-    \resumeItem {Strong technical and management skills. Excellent written and verbal communication skills}
-    \resumeItemListEnd
-\resumeEntryEnd
-    
-%-------------------------------------------------- EXPERIENCE --------------------------------------------------
-\section{\faPieChart}{Experience}
+\end{center}
+\end{minipage}}
 
-\resumeEntryStart
-\ifthenelse {\boolean{manager}} {
-\resumeEntryTSDL
-    {Palo Alto Networks}{Jun 2013 -- Present}
-    {Sr. Manager/Sr. Principal Engineer, ASIC Engineering}{Santa Clara, CA}
-}{
-\resumeEntryTSDL
-    {Palo Alto Networks}{Jun 2013 -- Present}
-    {Sr. Principal Engineer, ASIC Engineering}{Santa Clara, CA}
-%\resumeEntryTSDLpart
-%    {Sr. Principal Engineer/Sr. Manager, ASIC Engineering}{}
-%\resumeEntryTSDLpart
-%    {Principal Engineer/Manager, ASIC Engineering}{}    
-%\resumeEntryTSDLpart    
-%    {Principal Engineer}{}
+
+\fcolorbox{white}{white}{
+\begin{minipage}[c][0.16\textheight][t]{\linewidth}
+\vspace{8pt}
+\begin{center}
+\parbox[c]{\innerwidth}{
+%	\includegraphics[trim= 320 130 460 210,clip,width=0.2\linewidth]{myfoto.jpg}
+	\hspace{8pt}
+	\parbox[b]{5cm}{
+	\metasection{Profile:}{20+ years of ASIC/FPGA verification experience}
+	\metasection{Languages:}{UVM, SystemVerilog, Verilog, C/C++/SystemC, Python} 
+	\metasection{Methodology:}{Constrained-random/Coverage-driven Simulation, Emulation, Formal, Architecture/Performance Modeling, SVA}
+	\metasection{Protocols:}{PCIe, AHCI, NVM Express, Interlaken, DDR3, Ethernet (L2, L3, L4)}        
+	\metasection{Domains:}{Networking, Processors (CPU, DSP), Storage (SSDs, DDR3)}
+	}
 }
-    \resumeItemListStart
-    \resumeItem {Managed a team of 15+ engineers verifying complex ASICs for firewall products. Responsible for staffing (internally as well as leveraging external partners), planning, schedules and employee assessments}
-    \resumeItem {Leading effort for defining/verifying fourth generation Flow Engine ASIC. Led effort to successfully verify/tape-out/bring up silicon for multiple generations of flow engine chips}
-    \resumeItem {Championed design verification methodology improvements/enhancements to improve design and verification quality and development time}
-        \resumeItemListStart    
-        \resumeItem {Drove emulator selection, deployment and use models}        
-        \resumeItem {Deployed automated mechanisms to validate PCAPs against architectural and simulation models}
-%        \resumeItem {Centralized functional verification regression runs, coverage collection and result reporting for entire team}
-%        \resumeItem {Introduced new verification flows, methodologies and automation tools to improve design & verification quality and development time}
-        \resumeItem {Status reporting and dashboards}
-        \resumeItemListEnd    
-%    \resumeItem {Handle conflict resolution, performance management, cross-functional escalations}
-%    \resumeItem {Mentored and trained both design & verification engineers & interns}
-%    \resumeItem {Built and managed large verification and validation teams from scratch, across multiple geographic locations}
-%    \resumeItem {Actively participated in SoC architecture, specification reviews and provide feedback to imporve design and DV efficency}
-%    \resumeItem {Empowered and coached DV managers and leads to develop next generation leadership}        
-%    \resumeItem {Constantly seek out opportunities for improving verification process by evaluation new flows and methodologies, EDA tools, standard VIPs and procuring from third party vendors}
-     \resumeItem {Verifying QoS features (scheduling, shaping) using a Python-SystemC-Veloce emulation flow}
-     \resumeItem {Verified multiple blocks in the ingress and egress pipelines including the access control lists and the forwarding engines}
-     \resumeItem {Verified ISA of a custom microcontroller by developing a reference model using SystemC, a random instruction generator using Python, formal property verification using VC-Formal}
-    \resumeItemListEnd
-\resumeEntryEnd
+\end{center}
+\end{minipage}}\\[-4pt]
 
-\resumeEntryStart
-\resumeEntryTSDL
-   {LSI (formerly SandForce)}{Jul 2011 -- Jun 2013}
-   {Principal Verification Design Engineer}{Milpitas, CA}
-   \resumeItemListStart
-   \resumeItem {Verified the 4x Gen2 dual-port PCIe interface for the next-generation flash storage processor. Architected and developed infrastructure and tests for AHCI and NVM Express (NVMe) host interfaces in a PCIe environment using UVM. Also verified hardware-based virtualization (SR-IOV), power management, error handling and recovery features, including interrupt servicing}
-   \resumeItem {Wrote embedded firmware tests in C to verify DMA (over PCIe) programming model and functionality. Also wrote tests duplicating emulation fail scenarios to facilitate debug}
-   \resumeItemListEnd
-\resumeEntryEnd
+\fcolorbox{bgcol}{bgcol}{
+\begin{minipage}[c][0.01\textheight][t]{\linewidth}
+\vspace{-8pt}
+\begin{center}
+\parbox[b]{0.75\linewidth}{
+	\begin{center}
+%	 \textcolor{white}{www.jankuester.com} \textcolor{white}{$\cdot$} \textcolor{white}{twitter.com/kuester\_jan}
+	\end{center}
+}
+\end{center}
+\end{minipage}}
 
-\resumeEntryStart
-\resumeEntryTSDL
-   {Cavium Networks}{Mar 2008 -- Jul 2011}
-   {Principal Engineer}{Marlboro, MA}
-   \resumeItemListStart
-   \resumeItem {Designed and implemented the add-work engine for the schedule/synchronize/order unit in the Octeon 2 CN68xx product line. The logic handled ordering of new work into 8 input work queues of arbitrarily large size (with overflow into DRAM), with a performance of 100M add-work’s/sec}
-   \resumeItem {Owned full chip integration, modeling the PLLs and pad frame on CN63xx, In addition, added in hardware-assist logic to all of CN63xx’s MAC-PHY interfaces to support the IEEE 1588 protocol}
-   \resumeItem {Designed and implemented a high-performance DDR3 Memory Controller for the Octeon 2 CN63xx/CN68xx product lines. Developed several advanced queuing, arbitration, page-management, and scheduling features to maximize bandwidth, minimize latency, and optimize power management of the controller. Worked with custom designers to implement the associated PHY in a 65nm process, targeted at up to DDR3-1600. Ran synthesis and timing analysis to meet timing performance, power and yield constraints. Also ran gate level simulations with back-annotated SDF and LEC formal verification to verify quality}
-   \resumeItem {Verified the NAND Flash Controller for the Octeon Plus CN52xx product line}
-   \resumeItemListEnd
-\resumeEntryEnd
+%----------------------------------------------------------------------------------------
+% EXPERIENCE
+%----------------------------------------------------------------------------------------
+\fcolorbox{white}{white}{
+\begin{minipage}[c][0.36\textheight][t]{\linewidth}
+\vspace{4pt}
+\hspace{26pt}
+\parbox[c]{0.75\linewidth}{
+%
+\cveventthree{}{ASIC Verification Engineer}{}{Verified multiple blocks in the ingress and egress pipelines including the access control list\\and the forwarding engine using a constrained-random UVM environment}{Verified ISA of a custom microcontroller by developing a reference model using SystemC,\\a random instruction generator using Python, formal property verification using VC-Formal}{Verified QoS features (scheduling, shaping) using a Python-SystemC-Veloce emulation flow}
 
-\resumeEntryStart
-\ifthenelse {\boolean{manager}} {
-\resumeEntryTSDL
-   {Texas Instruments}{Oct 2003 -- Mar 2008}
-   {Design Verification Lead}{Dallas, TX}  
-}{
-\resumeEntryTSDL
-   {Texas Instruments}{Oct 2003 -- Mar 2008}
-   {Design Verification Lead}{Dallas, TX}
-%\resumeEntryTSDLpart
-%    {Design Verification Engineer}{}
-}    
-   \resumeItemListStart
-   \resumeItem {Led a team of 4 engineers verifying a multi-core, multi-threaded VLIW DSP. Responsible for verification planning, defining test generation flows, infrastructure development and execution}
-   \resumeItem {Championed effort to align methodology and tools for processor verification across TI}
-   \resumeItem {Led project to improve product delivery for the Guinness Book of World Record winning 1GHz DSP. Reduced test times by 2s per test insertion for an overall savings of 3.09 months of tester time per million parts}
-   \resumeItem {Verified the low power and memory test/characterization features of a single chip W-CDMA baseband device for the base station market. The market for this chip is estimated to be US\$ 600 million}   
-   \resumeItem {Verified a 750 MHz fixed point ISA DSP (part of the TMS320 family of DSPs). This CPU core (along with the corresponding mega-module) is being leveraged in multiple chips across TI. The market for this core is estimated to be over US\$ 1 billion over the next ten years}
-   \resumeItemListEnd
-\resumeEntryEnd   
+%\textcolor{softcol}{\hrule}
 
-\resumeEntryStart
-\resumeEntryTSDL
-   {Intrinsix}{Mar 2001 -- Oct 2003}
-   {Design Engineer}{Westboro, MA}
-   \resumeItemListStart
-%   \resumeItem {Design and Verification Consultant for ASIC and FPGA development}
-   \resumeItem {Worked on multiple product teams with responsibilities including micro-architecture, RTL design, synthesis and static timing analysis, functional/gate-level verification, FPGA implementation and prototyping, and lab debug}
-   \resumeItem {Successful projects included verification of a personal authentication SoC (for use in Bloomberg terminals), design and implementation of a Digital Test Controller FPGA (for MEMS test systems), verification and synthesis of a high-performance configurable RISC core and design and implementation of major portions of a telephony/switch ASIC}
-   \resumeItemListEnd
-\resumeEntryEnd
+%
+\cvevent{}{ASIC Verification Engineer}{}{Verified a 4x Gen2 PCIe interface for a storage processor. Developed infrastrucure and\\tests for AHCI and NVMe host interfaces using UVM. Verified SR-IOV, power management,\\error handling and recovery features, including interrupt servicing}{Wrote embedded firmware tests in C to verify DMA (over PCIe) programming model\\and functionaity}
 
-\resumeEntryStart
-\resumeEntryTSDL
-   {Immersive Technologies}{Jun 2000 -- Jan 2001}
-   {Design Engineer}{Malden, MA}
-   \resumeItemListStart
-%   \resumeItem {Computer Graphics start-up with proprietary hardware/software technology accelerating computer image generation to minutes instead of hours}
-   \resumeItem {Developed and implemented a ‘beam traversal’ algorithm in C++ for finding geometry in the path of a beam, to replace the traditional ray tracing algorithms used for rendering in computer graphics. Resulted in a 3-5x speed-up in the image generation time}
-   \resumeItem {Designed and implemented a fully pipelined hash-table in hardware to replace one in software. The design took in five 16-bit integers, computed the hash, interacted with SRAM and output the hashed-value}
-   \resumeItemListEnd
-\resumeEntryEnd
 
-%% \resumeEntryStart
-%% \resumeEntryTSDL
-%%    {Carnegie Mellon University}{Aug 1998 -- May 2000}
-%%    {Research Assistant}{Pittsburgh, PA}
-%%    \resumeItemListStart
-%%    \resumeItem {Research focus was on creating models of complex micro-electromechanical systems (MEMS) to enable the development of systems containing a large number of micron to millimeter-size devices each interacting with the environment}
-%%    \resumeItem {Invented and implemented algorithms for reducing the number of nodes and variables in a MEMS design. The generated models were integrated with existing NODAS models using Spectre and Matlab and resulted in a 10-100x speedup in total simulation time}
-%%    \resumeItemListEnd
-%% \resumeEntryEnd      
+%\textcolor{softcol}{\hrule}
 
-%% %-------------------------------------------------- PROJECTS --------------------------------------------------
-%% \section{\faFlask}{Projects}
+%
+\cvevent{}{SoC Verification Engineer}{}{Designed/Implemented a high-performance DDR3 memory controller with advanced queuing,\\arbitration, page-management and scheduling features}{Verified NAND Flash Controller using a C based TB}
 
-%% \resumeEntryStart
-%% \resumeEntryTD
-%%     {Schrute Farms (Bed and Breakfast)}{}
-%%     \resumeItemListStart
-%%     \resumeItem {A beautiful resort that provides fun activites like tablemaking and mattress making.}
-%%     \resumeItemListEnd
-%% \resumeEntryEnd
 
-%% \resumeEntryStart
-%% \resumeEntryTD
-%%     {Dwight Schrute's Gym for Muscles}{}
-%%     \resumeItemListStart
-%%     \resumeItem {A built-in gym inside the Dunder Mifflin office complex that will buy your tin for 5 cents a yard.}
-%%     \resumeItemListEnd
-%% \resumeEntryEnd
+%\textcolor{softcol}{\hrule}
 
-%% \resumeEntryStart
-%% \resumeEntryTD
-%%     {Sesame Avenue Daycare Center for Infants and Toddlers}{}
-%%     \resumeItemListStart
-%%     \resumeItem {A great daycare for infants with a focus on cognitive development.}
-%%     \resumeItemListEnd
-%% \resumeEntryEnd
+%
+\cveventone{}{SoC Verification Engineer}{}{Verified a multi-core multi-threaded VLIW DSP and a fixed-point ISA DSP}
 
-%-------------------------------------------------- EDUCATION --------------------------------------------------
-\section{\faGraduationCap}{Education}
+%\textcolor{softcol}{\hrule}
 
-\ifthenelse {\boolean{manager}} {
-\resumeEntryStart
-\resumeEntryTSDL
-    {Southern Methodist University}{Aug 2005 -- May 2007}
-    {Master of Business Administration, Finance/Marketing}{Dallas, TX}
-\resumeEntryEnd
-}{}
+%\cvevent{}{SoC Verification Engineer}{}{Verified a personal authentication SoC. Wrote tests in ARM assembly and SystemVerilog}{Implemented a digital test controller FPGA for MEMs test systems}
+}
+\hspace{18pt}
+\textcolor{sectcol}{\rule[-3.2cm]{2pt}{7cm}}
+\hspace{12pt}
+\rotatebox[origin=c]{270}{\HUGE \textsc{Experience}}
+\end{minipage}}\\[+19pt]
 
-\resumeEntryStart
-\resumeEntryTSDL
-    {Carnegie Mellon University}{Aug 1998 -- May 2000}
-    {Master of Science, Electrical \& Computer Engineering}{Pittsburgh, PA}
- \resumeEntryEnd    
+%----------------------------------------------------------------------------------------
+% SUMMARY
+%----------------------------------------------------------------------------------------
+\fcolorbox{bgcol}{bgcol}{
+\begin{minipage}[c][0.01\textheight][t]{\linewidth}
+\vspace{-8pt}
+\begin{center}
+\parbox[b]{0.75\linewidth}{
+	\begin{center}
+%	 \textcolor{white}{www.jankuester.com} \textcolor{white}{$\cdot$} \textcolor{white}{twitter.com/kuester\_jan}
+	\end{center}
+}
+\end{center}
+\end{minipage}}
+%% \fcolorbox{bgcol}{bgcol}{
+%% \begin{minipage}[c][0.03\textheight][t]{\linewidth}
+%% \vspace{-3pt}
+%% \begin{center}
+%% \parbox[b]{0.75\linewidth}{
+%% 	\begin{center}
+%% 	\large
+%% %	\textcolor{white}{Check out my open source projects at - } \textcolor{sectcol}{\textbf{github.com/jankapunkt}}
+%% 	\end{center}
+%% }
+%% \end{center}
+%% \end{minipage}}\\[-4pt]
+%----------------------------------------------------------------------------------------
+% EDUCATION
+%----------------------------------------------------------------------------------------
+\fcolorbox{white}{white}{
+\begin{minipage}[c][0.2875\textheight][t]{\linewidth}
+\vspace{1pt}
+\hspace{26pt}
+\parbox[c]{0.75\linewidth}{
+%\cvsection{Education}
 
-\resumeEntryStart
-\resumeEntryTSDL
-    {Indian Institute of Technology (IIT), Madras}{Aug 1994 -- May 1998}
-    {Bachelor of Technology, Electrical Engineering}{Chennai, India}
-\resumeEntryEnd    
+\cveventsmall{}{Carnegie Mellon University}{Pittsburgh, PA}{Master of Science, Electrical and Computer Engineering}
 
-%-------------------------------------------------- PROGRAMMING SKILLS --------------------------------------------------
-\section{\faGears}{Skills}
+%\textcolor{softcol}{\hrule}
 
-\resumeEntryStart
-\resumeEntryS{Languages/Methodology } {Verilog, SystemVerilog, UVM, VHDL, Verisity e, Verilog PLI/DPI, C, C++, Perl, Python, Make, Shell scripting, SVA, TestBuilder}
-% \resumeEntryS{Tools } {Synopsys Design Compiler, IC Compiler, Primetime, VCS/DVE, Cadence NC-Verilog/Simvision, Verilog-XL, Axiom MPSim, Mentor Graphics ModelSim, Cadence (Verisity) Specman Elite and eAnalyzer, Xilinx Alliance Tools, Altera Quartus and MAX-Plus 2, Synplify, Denali Memory Models, Springsoft (Novas) Verdi and Debussy, RealIntent Meridian, Hspice, Matlab, VC-Formal}
-\resumeEntryS{Protocols/Standards/Interfaces } {PCIe, AHCI, NVM Express, ONFI, DDR3, Ethernet, Interlaken}
-\resumeEntryEnd
+\cveventsmall{}{Indian Institute of Technology, Madras}{Chennai, India}{Bachelor of Technology, Electrical Engineering}
+}
+\hspace{18pt}
+\textcolor{sectcol}{\rule[-3.2cm]{2pt}{7cm}}
+\hspace{12pt}
+\rotatebox[origin=c]{270}{\HUGE \textsc{Education}}
+\end{minipage}}\\[-40pt]
+%---------------------------------------------------------------------------------------
+%	QR CODE (optional)
+%----------------------------------------------------------------------------------------
+%\vspace{-136pt}
+%\hspace{0.75\linewidth}
+%\includegraphics[width=103pt]{qrcode}
+%\normalsize
+%\vspace{88pt}
 
+
+
+%-------------------------------------------------------------------------------------------------
+% FOOTER
+%--------------------------------------------------------------------------------------------------
+\fcolorbox{bgcol}{bgcol}{
+\begin{minipage}[c][0.01\textheight][t]{\linewidth}
+\vspace{-8pt}
+\begin{center}
+\parbox[b]{0.75\linewidth}{
+	\begin{center}
+%	 \textcolor{white}{www.jankuester.com} \textcolor{white}{$\cdot$} \textcolor{white}{twitter.com/kuester\_jan}
+	\end{center}
+}
+\end{center}
+\end{minipage}}
+%============================================================================%
+%
+%
+%
+%	DOCUMENT END
+%
+%
+%
+%============================================================================%
 \end{document}
