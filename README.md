@@ -23,7 +23,7 @@ _Engineer based in the SF Bay Area, California_ <br>
   - **_Technologies used:_** UVM, SystemVerilog, Python, SystemC
   <br><br>
 
-**Principal Engineer** @ [Seagate (formerly SandForce)](https://www.seagate.com) _(Jul 2011 - Jun 2013)_ <br>
+**Principal Engineer** @ [Seagate (formerly SandForce, LSI, Avago)](https://www.seagate.com) _(Jul 2011 - Jun 2013)_ <br>
   - Hardware verification of flash storage processors (PCIe, AHCI, NVMe, DMA Engines)
   - **_Technologies used:_** UVM, SystemVerilog, C, Synopsys VCS.
   <br><br>
