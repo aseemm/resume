@@ -206,12 +206,12 @@
 \resumeEntryStart
 \resumeEntrySummary
     \resumeItemListStart
-    \resumeItem {20+ years of experience in ASIC/FPGA design and verification with 5+ years in leading ASIC pre \& post-silicon teams}
+    \resumeItem {20+ years of experience in ASIC/FPGA development with 5+ years in leading ASIC pre \& post-silicon teams}
 \ifthenelse {\boolean{manager}} {}{    
     \resumeItem {Hands-on expertise in building scalable, reusable, self-checking DV TBs using SystemVerilog/UVM methodology; building emulation \& formal testbenches; post-silicon validation}
 }
 \ifthenelse {\boolean{manager}} {
-    \resumeItem {Expertise in ASIC/FPGA design and verification flows (concept to production through sustaining) with a track record of delivering first pass production silicon}
+    \resumeItem {Expertise in ASIC/FPGA design, verification and PD flows (concept to production through sustaining) with a track record of delivering first pass production silicon}
 }{}
     \resumeItem {Proven success in fostering productive working relationships, managing multiple, simultaneous tasks while leading and directing high performance engineering teams to complete projects within time and budget constraints}
     \resumeItem {Strong technical and management skills. Excellent written and verbal communication skills}
@@ -229,7 +229,7 @@
    \resumeItem {Leading a team developing IPs for AR/VR optimized silicon relying heavily on Audio, Machine Learning and Low Power technologies} 
    \resumeItem {Responsibilities include architecture, micro-architecture, RTL design, synthesis/PnR and static timing analysis, functional/gate-level verification, FPGA implementation and prototyping, and lab debug}
    \resumeItem {Managing IP requirements and tradeoffs among features, performance, cost, and schedule in close collaboration with systems and software leads}
-   \resumeItem {Spearheading initiatives to improve quality, velocity, and satisfaction}
+%   \resumeItem {Spearheading initiatives to improve quality, velocity, and satisfaction}
    \resumeItemListEnd
 \resumeEntryEnd
 
@@ -251,14 +251,22 @@
 }
     \resumeItemListStart
     \resumeItem {Managed a team of 15+ engineers verifying complex ASICs for firewall products. Responsible for staffing (internally as well as leveraging external partners), planning, schedules and employee assessments}
-    \resumeItem {Leading effort for defining/verifying fourth generation Flow Engine ASIC. Led effort to successfully verify/tape-out/bring up silicon for multiple generations of flow engine chips}
+    \resumeItem {Led effort to successfully verify/tape-out/bring up silicon for multiple generations of Flow Engine ASICs}
+        \resumeItemListStart    
+        \resumeItem {Verified QoS features (scheduling, shaping) using a Python-SystemC-Veloce emulation flow}
+        \resumeItem {Verified multiple blocks in the ingress and egress pipelines including the access control lists and the forwarding engines}
+        \resumeItem {Verified ISA of a custom microcontroller by developing a reference model using SystemC, a random instruction generator using Python, formal property verification using VC-Formal}
+%        \resumeItem {Centralized functional verification regression runs, coverage collection and result reporting for entire team}
+%        \resumeItem {Introduced new verification flows, methodologies and automation tools to improve design & verification quality and development time}
+%        \resumeItem {Status reporting and dashboards}
+        \resumeItemListEnd        
     \resumeItem {Championed design verification methodology improvements/enhancements to improve design and verification quality and development time}
         \resumeItemListStart    
         \resumeItem {Drove emulator selection, deployment and use models}        
         \resumeItem {Deployed automated mechanisms to validate PCAPs against architectural and simulation models}
 %        \resumeItem {Centralized functional verification regression runs, coverage collection and result reporting for entire team}
 %        \resumeItem {Introduced new verification flows, methodologies and automation tools to improve design & verification quality and development time}
-        \resumeItem {Status reporting and dashboards}
+%        \resumeItem {Status reporting and dashboards}
         \resumeItemListEnd    
 %    \resumeItem {Handle conflict resolution, performance management, cross-functional escalations}
 %    \resumeItem {Mentored and trained both design & verification engineers & interns}
@@ -266,9 +274,6 @@
 %    \resumeItem {Actively participated in SoC architecture, specification reviews and provide feedback to imporve design and DV efficency}
 %    \resumeItem {Empowered and coached DV managers and leads to develop next generation leadership}        
 %    \resumeItem {Constantly seek out opportunities for improving verification process by evaluation new flows and methodologies, EDA tools, standard VIPs and procuring from third party vendors}
-     \resumeItem {Verifying QoS features (scheduling, shaping) using a Python-SystemC-Veloce emulation flow}
-     \resumeItem {Verified multiple blocks in the ingress and egress pipelines including the access control lists and the forwarding engines}
-     \resumeItem {Verified ISA of a custom microcontroller by developing a reference model using SystemC, a random instruction generator using Python, formal property verification using VC-Formal}
     \resumeItemListEnd
 \resumeEntryEnd
 
@@ -288,8 +293,9 @@
    {Principal Engineer}{Marlborough, MA}
    \resumeItemListStart
    \resumeItem {Designed and implemented the add-work engine for the schedule/synchronize/order unit in the Octeon 2 CN68xx product line. The logic handled ordering of new work into 8 input work queues of arbitrarily large size (with overflow into DRAM), with a performance of 100M add-work’s/sec}
+   \resumeItem {Designed and implemented a high-performance DDR3 Memory Controller for the Octeon 2 CN63xx/CN68xx product lines. Developed several advanced queuing, arbitration, page-management, and scheduling features to maximize bandwidth, minimize latency, and optimize power management of the controller}
+   % . Worked with custom designers to implement the associated PHY in a 65nm process, targeted at up to DDR3-1600. Ran synthesis and timing analysis to meet timing performance, power and yield constraints. Also ran gate level simulations with back-annotated SDF and LEC formal verification to verify quality}
    \resumeItem {Owned full chip integration, modeling the PLLs and pad frame on CN63xx, In addition, added in hardware-assist logic to all of CN63xx’s MAC-PHY interfaces to support the IEEE 1588 protocol}
-   \resumeItem {Designed and implemented a high-performance DDR3 Memory Controller for the Octeon 2 CN63xx/CN68xx product lines. Developed several advanced queuing, arbitration, page-management, and scheduling features to maximize bandwidth, minimize latency, and optimize power management of the controller. Worked with custom designers to implement the associated PHY in a 65nm process, targeted at up to DDR3-1600. Ran synthesis and timing analysis to meet timing performance, power and yield constraints. Also ran gate level simulations with back-annotated SDF and LEC formal verification to verify quality}
    \resumeItem {Verified the NAND Flash Controller for the Octeon Plus CN52xx product line}
    \resumeItemListEnd
 \resumeEntryEnd
@@ -308,9 +314,9 @@
 }    
    \resumeItemListStart
    \resumeItem {Led a team of 4 engineers verifying a multi-core, multi-threaded VLIW DSP. Responsible for verification planning, defining test generation flows, infrastructure development and execution}
-   \resumeItem {Championed effort to align methodology and tools for processor verification across TI}
+%   \resumeItem {Championed effort to align methodology and tools for processor verification across TI}
    \resumeItem {Led project to improve product delivery for the Guinness Book of World Record winning 1GHz DSP. Reduced test times by 2s per test insertion for an overall savings of 3.09 months of tester time per million parts}
-   \resumeItem {Verified the low power and memory test/characterization features of a single chip W-CDMA baseband device for the base station market. The market for this chip is estimated to be US\$ 600 million}   
+%   \resumeItem {Verified the low power and memory test/characterization features of a single chip W-CDMA baseband device for the base station market. The market for this chip is estimated to be US\$ 600 million}   
    \resumeItem {Verified a 750 MHz fixed point ISA DSP (part of the TMS320 family of DSPs). This CPU core (along with the corresponding mega-module) is being leveraged in multiple chips across TI. The market for this core is estimated to be over US\$ 1 billion over the next ten years}
    \resumeItemListEnd
 \resumeEntryEnd   
@@ -377,13 +383,13 @@
 %-------------------------------------------------- EDUCATION --------------------------------------------------
 \section{\faGraduationCap}{Education}
 
-\ifthenelse {\boolean{manager}} {
-\resumeEntryStart
-\resumeEntryTSDL
-    {Southern Methodist University}{Aug 2005 -- May 2007}
-    {Master of Business Administration, Finance/Marketing}{Dallas, TX}
-\resumeEntryEnd
-}{}
+% \ifthenelse {\boolean{manager}} {
+% \resumeEntryStart
+% \resumeEntryTSDL
+%     {Southern Methodist University}{Aug 2005 -- May 2007}
+%     {Master of Business Administration, Finance/Marketing}{Dallas, TX}
+% ^ \resumeEntryEnd
+% }{}
 
 \resumeEntryStart
 \resumeEntryTSDL
@@ -403,7 +409,7 @@
 \resumeEntryStart
 \resumeEntryS{Languages/Methodology } {Verilog, SystemVerilog, UVM, VHDL, Verisity e, Verilog PLI/DPI, C, C++, Perl, Python, Make, Shell scripting, SVA, TestBuilder}
 % \resumeEntryS{Tools } {Synopsys Design Compiler, IC Compiler, Primetime, VCS/DVE, Cadence NC-Verilog/Simvision, Verilog-XL, Axiom MPSim, Mentor Graphics ModelSim, Cadence (Verisity) Specman Elite and eAnalyzer, Xilinx Alliance Tools, Altera Quartus and MAX-Plus 2, Synplify, Denali Memory Models, Springsoft (Novas) Verdi and Debussy, RealIntent Meridian, Hspice, Matlab, VC-Formal}
-\resumeEntryS{Protocols/Standards/Interfaces } {PCIe, AHCI, NVM Express, ONFI, DDR3, Ethernet, Interlaken}
+\resumeEntryS{Protocols/Standards/Interfaces } {AMBA (AXI, AHB, APB), OCP2, PCIe, AHCI, NVM Express, ONFI, DDR3, Ethernet, Interlaken}
 \resumeEntryEnd
 
 \end{document}
